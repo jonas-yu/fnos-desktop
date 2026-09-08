@@ -1,0 +1,1 @@
+{"default":{"identifier":"default","description":"fnos-desktop 默认能力（主窗口 + NAS 窗口）","local":true,"windows":["main","nas_*"],"permissions":["core:default","core:window:allow-hide","core:window:allow-show","core:window:allow-close","core:window:allow-set-focus","core:window:allow-start-dragging","store:default","window-state:default"]}}

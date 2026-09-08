@@ -1,0 +1,24 @@
+{
+  "name": "fnos-desktop-ui",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "tauri": "tauri"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2",
+    "vue": "^3.5"
+  },
+  "devDependencies": {
+    "@esbuild/linux-x64": "^0.25.12",
+    "@tauri-apps/cli": "^2.11.4",
+    "@vitejs/plugin-vue": "^5",
+    "typescript": "^5",
+    "vite": "^6.4.3"
+  },
+  "packageManager": "pnpm@9.15.9+sha512.68046141893c66fad01c079231128e9afb89ef87e2691d69e4d40eee228988295fd4682181bae55b58418c3a253bde65a505ec7c5f9403ece5cc3cd37dcf2531"
+}
