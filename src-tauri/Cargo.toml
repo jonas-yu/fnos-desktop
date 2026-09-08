@@ -1,6 +1,6 @@
 [package]
 name = "fnos-desktop"
-version = "0.1.0"
+version = "0.2.0"
 description = "自研 fnOS 桌面客户端（Windows 11，自用版）"
 authors = ["jonas-yu"]
 edition = "2021"

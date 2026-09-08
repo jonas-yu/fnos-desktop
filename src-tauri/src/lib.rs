@@ -21,6 +21,9 @@ pub fn run() {
         .setup(|app| {
             state::setup_state(app)?;
             window::setup_tray(app.handle())?;
+            if let Some(w) = app.get_webview_window("main") {
+                window::hide_on_close(&w);
+            }
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![commands::profile::open_nas])
