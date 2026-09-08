@@ -36,10 +36,11 @@
       "icons/icon.ico",
       "icons/icon.png"
     ],
-    "nsis": {
-      "installMode": "currentUser",
-      "languages": ["SimpChinese", "English"],
-      "portable": true
+    "windows": {
+      "nsis": {
+        "installMode": "currentUser",
+        "languages": ["SimpChinese", "English"]
+      }
     }
   }
 }

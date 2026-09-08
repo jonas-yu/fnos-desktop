@@ -1,9 +1,16 @@
 # Rust
 /target
+/src-tauri/target
+/src-tauri/gen
 
 # Node
+/node_modules
 /ui/node_modules
 /ui/dist
+
+# 本地 npm/pnpm 镜像配置（CI 用官方 registry）
+.npmrc
+/ui/.npmrc
 
 # 日志与系统
 *.log
@@ -13,4 +20,3 @@ Thumbs.db
 # 本地密钥（绝不入库）
 *.key
 *.pem
-ui/.npmrc

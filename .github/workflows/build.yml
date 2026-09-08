@@ -21,12 +21,14 @@ jobs:
         with:
           version: 9
 
+      - name: 安装根依赖（tauri CLI）
+        run: pnpm install --frozen-lockfile
+
       - name: 安装前端依赖
         working-directory: ui
         run: pnpm install --frozen-lockfile
 
-      - name: Tauri 构建（NSIS 安装包 + 便携版）
-        working-directory: ui
+      - name: Tauri 构建（NSIS 安装包）
         run: pnpm tauri build
 
       - name: 上传安装包产物
@@ -34,5 +36,5 @@ jobs:
         with:
           name: fnos-desktop-windows
           path: |
-            target/release/bundle/nsis/*.exe
+            src-tauri/target/release/bundle/nsis/*.exe
           if-no-files-found: error
