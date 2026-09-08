@@ -26,6 +26,11 @@ pub fn open_nas_window<R: Runtime>(app: &AppHandle<R>, label: &str, url: &str) -
 
     let data_dir = app_data_dir(app).join("webviews").join(label);
 
+    // WebView2 user data folder 必须已存在，否则初始化失败 → 空白窗口
+    if let Err(e) = std::fs::create_dir_all(&data_dir) {
+        return Err(format!("创建 WebView 数据分区失败: {e}"));
+    }
+
     let win = WebviewWindowBuilder::new(app, label, WebviewUrl::External(parsed))
         .title("飞牛 NAS")
         .inner_size(1200.0, 800.0)

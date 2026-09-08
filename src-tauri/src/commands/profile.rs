@@ -22,9 +22,10 @@ pub struct ServerProfile {
 /// M2 起改为：list_profiles / add_profile / open_profile。
 #[tauri::command]
 pub fn open_nas(app: AppHandle, url: String) -> Result<String, String> {
-    let url = url.trim().to_string();
+    let mut url = url.trim().to_string();
+    // URL 归一化：未带协议时自动补 https://
     if !(url.starts_with("http://") || url.starts_with("https://")) {
-        return Err("地址需以 http:// 或 https:// 开头（如 https://192.168.1.16:5667）".into());
+        url = format!("https://{url}");
     }
     let label = nas_label(&url);
     window::open_nas_window(&app, &label, &url)?;

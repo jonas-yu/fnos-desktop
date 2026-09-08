@@ -8,6 +8,12 @@ const error = ref("");
 const busy = ref(false);
 const opened = ref<string | null>(null);
 
+function normalizeUrl(raw: string): string {
+  let u = raw.trim();
+  if (!/^https?:\/\//i.test(u)) u = `https://${u}`;
+  return u;
+}
+
 async function openNas() {
   error.value = "";
   opened.value = null;
@@ -17,7 +23,7 @@ async function openNas() {
   }
   busy.value = true;
   try {
-    const label = await invoke<string>("open_nas", { url: url.value.trim() });
+    const label = await invoke<string>("open_nas", { url: normalizeUrl(url.value) });
     opened.value = label;
   } catch (e) {
     error.value = String(e);
@@ -45,7 +51,7 @@ async function openNas() {
         <span>地址</span>
         <input
           v-model="url"
-          placeholder="https://192.168.1.16:5667 或 https://域名"
+          placeholder="NAS 域名或局域网 IP"
           @keyup.enter="openNas"
         />
       </label>
@@ -55,7 +61,8 @@ async function openNas() {
         {{ busy ? "打开中…" : "打开" }}
       </button>
       <p class="hint">
-        地址支持直接粘贴；多台 NAS 的登录态各自独立保存（WebView 分区隔离）。
+        支持域名（如 nas.example.com）或局域网 IP（如 192.168.1.10），不填协议时自动补 https://。
+        多台 NAS 的登录态各自独立保存。
       </p>
     </section>
   </div>
